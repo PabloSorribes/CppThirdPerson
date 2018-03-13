@@ -59,7 +59,11 @@ void AMyCppActor::SetFullName(FString p_firstName, FString p_lastName)
 
 void AMyCppActor::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
+	UE_LOG(LogTemp, Warning, TEXT("Full name is: %s. Other actors name is: %s"), *GetFullName(), *OtherActor->GetName());
 
+	FString name = "";
+	FullName_Print(name);
+	UE_LOG(LogTemp, Warning, TEXT("Fullname is %s"), *name);
 }
 
 
