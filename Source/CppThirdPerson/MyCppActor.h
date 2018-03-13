@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-
 #include "MyCppActor.generated.h"
 
 class UStaticMeshComponent;

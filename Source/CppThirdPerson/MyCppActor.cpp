@@ -14,8 +14,10 @@ AMyCppActor::AMyCppActor()
 	box = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Box"));
 	RootComponent = box;
 
-	trigger = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Trigger"));
+	trigger = CreateDefaultSubobject<UBoxComponent>(TEXT("Trigger"));
 	trigger->SetupAttachment(box);
+	trigger->bGenerateOverlapEvents = true;
+	trigger->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Block);
 	trigger->OnComponentBeginOverlap.AddDynamic(this, &AMyCppActor::OnOverlapBegin);
 }
 
@@ -37,7 +39,6 @@ void AMyCppActor::BeginPlay()
 void AMyCppActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 FString AMyCppActor::GetFullName()
